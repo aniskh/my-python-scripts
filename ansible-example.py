@@ -14,10 +14,10 @@ def ans_example():
     command='ansible-doc'
     # run ansible-doc command
     text=subprocess.Popen([command, args], stdout=subprocess.PIPE)
-    print('Module: ' + args)
     # retrieve Examples part
     documentation=str(text.stdout.read().decode('utf-8'))
     try:
+        print('Module: ' + args)
         print(documentation.split('EXAMPLES:')[1])
     except IndexError:
         print('Could not retrieve module documentation')
