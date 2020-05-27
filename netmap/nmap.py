@@ -32,12 +32,13 @@ def check_port4(ip4,port, port_type = None):
     port_socket.close()
     return status
 
-#function to check if list of ports in a file are open or not
-def check_ports4(ip4,ports_file,proto = None):
-    if proto is None:
-        proto = 'TCP'
+#function to scan all TCP/UDP ports ( default TCP )
+def check_ports4(ip4,proto = None):
+    if ( proto is None ) or (proto == 'TCP' ):
+        file_name="tcp_ports.txt"
+    elif proto == 'UDP':
+        file_name="udp_ports.txt"
     ip_address = ip4
-    file_name=ports_file
     try:
         ports_file = open(file_name, "r")
     except FileNotFoundError:
@@ -55,13 +56,25 @@ def check_ports4(ip4,ports_file,proto = None):
     ports_file.close()
     return ports_open
 def main():
-    ip_address = "192.168.122.1"
-    #ip_address = "127.0.0.1"
-    file_name="tcp_ports.txt"
-    ports_open = check_ports4(ip_address,file_name,'TCP')
+    try:
+        ip_address=str(sys.argv[1])
+    except IndexError:
+        #print ('\033[31m red \033[37m ')
+        colored.logcol("please specify the IP address", "err")
+        sys.exit(1)
+    proto = 'TCP'
+    try:
+        port_type = str(sys.argv[2])
+        if port_type == 'TCP':
+            proto = 'TCP'
+        elif port_type == 'UDP':
+            proto = 'UDP'
+    except IndexError:
+        pass
+    ports_open = check_ports4(ip_address,proto)
     colored.logcol("Open ports found: ",'warn')
     print(*ports_open, sep = "")
-
+    
 if __name__ == "__main__":
     main()
 
