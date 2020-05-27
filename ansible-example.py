@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #Python script to just display the example part of ansible modules
 
 import subprocess

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 The aim of this module is to provide functions that colors output.
 It is usefull for logs, stdout, ...
@@ -27,4 +27,3 @@ def logcol(text, level):
     elif level == 'warn':
         print(style.YELLOW + text + style.WHITE)
 
-#printcol("Hello, World!",'ok')

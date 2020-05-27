@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #Simple Python script to download files like wget
 
 import urllib.request

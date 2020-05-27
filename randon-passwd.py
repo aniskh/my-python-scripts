@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #Python script to generate a random password with 12-16 characters
 
 import string
