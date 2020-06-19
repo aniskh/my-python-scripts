@@ -1,2 +1,2 @@
 # my-python-scripts
-A collection of python scripts for sysadmin tasks
+A collection of python scripts and projects/games
