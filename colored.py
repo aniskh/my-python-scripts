@@ -27,3 +27,4 @@ def logcol(text, level):
     elif level == 'warn':
         print(style.YELLOW + text + style.WHITE)
 
+
